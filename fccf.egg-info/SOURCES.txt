@@ -1,8 +1,0 @@
-README.md
-setup.py
-fccf/__init__.py
-fccf/fitting_fns.py
-cheftgp.egg-info/PKG-INFO
-cheftgp.egg-info/SOURCES.txt
-cheftgp.egg-info/dependency_links.txt
-cheftgp.egg-info/top_level.txt
