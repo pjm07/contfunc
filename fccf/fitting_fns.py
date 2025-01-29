@@ -34,48 +34,25 @@ def fit_loop(constant_str,
             print(e)
             break
     
-        try:
-            fit_limit = len(digits) // 2
-            
-            hist, bins = np.histogram(digits[:fit_limit], bins = max(digits[:fit_limit]) - 1)
-            bins = bins[:-1]
-            print("hist has shape " + str(np.shape(hist)))
-            print("hist = " + str(hist))
-            print("bins has shape " + str(np.shape(bins)))
-            print("bins = " + str(bins))
-            
-            popt_power, pcov_power = curve_fit(func_power, bins, hist, 
-                                        p0 = [hist[0], 1], 
-                                        method = 'trf', 
-                                        x_scale = [hist[0], 1])
-            print("popt_power = " + str(popt_power))
-            print("pcov_power = " + str(pcov_power))
-            Upsilon_list.append(popt_power[1])
-            Upsilon_error_list.append(np.sqrt(np.diag(pcov_power)[1]))
-            
-            del hist, bins
-            
-            hist, bins = np.histogram(digits[fit_limit:], bins = max(digits[fit_limit:]) - 1)
-            bins = bins[:-1]
-            print("hist has shape " + str(np.shape(hist)))
-            print("hist = " + str(hist))
-            print("bins has shape " + str(np.shape(bins)))
-            print("bins = " + str(bins))
-            
-            popt_power, pcov_power = curve_fit(func_power, bins, hist, 
-                                        p0 = [hist[0], 1], 
-                                        method = 'trf', 
-                                        x_scale = [hist[0], 1])
-            print("popt_power = " + str(popt_power))
-            print("pcov_power = " + str(pcov_power))
-            
-            print("Successfully performed fit and extracted Upsilon values.")
-            
-            Upsilon_list.append(popt_power[1])
-            Upsilon_error_list.append(np.sqrt(np.diag(pcov_power)[1]))
-        except Exception as e:
-            print(e)
-            break
+        # try:
+        hist, bins = np.histogram(digits, bins = max(digits) - 1)
+        bins = bins[:-1]
+        print("hist has shape " + str(np.shape(hist)))
+        print("hist = " + str(hist))
+        print("bins has shape " + str(np.shape(bins)))
+        print("bins = " + str(bins))
+
+        popt_power, pcov_power = curve_fit(func_power, bins, hist, 
+                                    p0 = [hist[0], 1], 
+                                    method = 'trf', 
+                                    x_scale = [hist[0], 1])
+        print("popt_power = " + str(popt_power))
+        print("pcov_power = " + str(pcov_power))
+        Upsilon_list.append(popt_power[1])
+        Upsilon_error_list.append(np.sqrt(np.diag(pcov_power)[1]))
+        # except Exception as e:
+        #     print(e)
+        #     break
         
         del file, digits, hist, bins
     
