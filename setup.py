@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(
-    name='upsilon',
+    name='contfunc',
     packages=['fccf'],
     version='0.1',
     author='Patrick Millican',
